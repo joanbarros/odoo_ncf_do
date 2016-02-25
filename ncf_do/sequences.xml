@@ -1,0 +1,29 @@
+<openerp>
+  <data>
+    <!-- Numero de Consumidor Final -->
+    <record forcecreate="1 id=”seq_type_id” model=”ir.sequence.type”>
+      <field name=”name”>Numero de Consumidor Fiscal</field>
+      <field name=”code”>ncf_do.consumidor</field>
+    </record>
+    <record forcecreate=”1″ id=”seq_id” model=”ir.sequence”>
+      <field name=”name”>Numero de Consumidor Final</field>
+      <field name=”code”>ncf_do.consumidor</field>
+      <field name=”padding” eval=”pading”/>
+      <field name=”prefix”>prefix</field>
+      <field name=”suffix”>suffix</field>
+    </record>
+
+    <!-- Numero de Comprobante Fiscal -->
+    <record forcecreate=”1″ id=”seq_type_id” model=”ir.sequence.type”>
+      <field name=”name”>Numero de Comprobante Fiscal</field>
+      <field name=”code”>ncf_do.comprobante</field>
+    </record>
+    <record forcecreate=”1″ id=”seq_id” model=”ir.sequence”>
+      <field name=”name”>Numero de Comprobante Fiscal</field>
+      <field name=”code”>ncf_do.comprobante</field>
+      <field name=”padding” eval=”pading”/>
+      <field name=”prefix”>prefix</field>
+      <field name=”suffix”>suffix</field>
+    </record>
+  </data>
+</openerp>
