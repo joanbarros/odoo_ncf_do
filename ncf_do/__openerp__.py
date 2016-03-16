@@ -10,7 +10,7 @@
     """,
 
     'author': "Joan Barros",
-    'website': "http://joanbarros.github.io",
+    'website': "http://github.com/joanbarros/ncf_do",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml

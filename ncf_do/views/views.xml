@@ -15,20 +15,7 @@
       </field>
     </record>
     -->
-    <record id="view_ncf_list" model="ir.ui.view">
-      <field name="name">ncf_do list</field>
-      <field name="model">ncf_do.sequence</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="serie"/>
-          <field name="dn"/>
-          <field name="pe"/>
-          <field name="ai"/>
-          <field name="tcf"/>
-          <field name="sequencia"/>
-        </tree>
-      </field>
-    </record>
+
 
     <!-- actions opening views on models -->
     <!--
@@ -38,11 +25,7 @@
       <field name="view_mode">tree,form</field>
     </record>
     -->
-    <record id="action_ncf_list" model="ir.actions.act_window">
-      <field name="name">ncf window</field>
-      <field name="res_model">ncf_do.sequence</field>
-      <field name="view_mode">tree,form</field>
-    </record>
+
     <!-- server action to the one above -->
     <!--
     <record model="ir.actions.server" id="test_module.action_server">
@@ -67,8 +50,7 @@
     <menuitem name="Menu 1" id="test_module.menu_1" parent="test_module.menu_root"/>
     <menuitem name="Menu 2" id="test_module.menu_2" parent="test_module.menu_root"/>
     -->
-    <menuitem id="config" name="NCFsss" parent="account.menu_finance_configuration"
-      action="ncf_do.ncf_list"/>
+
     <!-- actions -->
     <!--
     <menuitem name="List" id="test_module.menu_1_list" parent="test_module.menu_1"
@@ -76,6 +58,162 @@
     <menuitem name="Server to list" id="test_module" parent="test_module.menu_2"
               action="test_module.action_server"/>
     -->
+
+    <!-- Top Menu Structure -->
+
+    <menuitem id="ncf_do.root" name="NCF" parent="account.menu_finance_configuration" />
+
+    <!-- /Top Menu Structure -->
+
+    <!-- NCF -->
+
+    <record id="ncf_do.ncf_list_view" model="ir.ui.view">
+      <field name="name">ncf list view</field>
+      <field name="model">ncf_do.ncf</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="prefix" />
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="ncf_do.ncf_list_action" model="ir.actions.act_window">
+      <field name="name">ncf window</field>
+      <field name="res_model">ncf_do.ncf</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="config" name="NCF Numbers" parent="ncf_do.root"
+      action="ncf_do.ncf_list_action"/>
+
+    <!-- /NCF -->
+
+    <!-- Series -->
+
+    <record id="ncf_do.series_list_view" model="ir.ui.view">
+      <field name="name">series list view</field>
+      <field name="model">ncf_do.series</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code" />
+          <field name="name" />
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="ncf_do.series_list_action" model="ir.actions.act_window">
+      <field name="name">series window</field>
+      <field name="res_model">ncf_do.series</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ncf_do.series_menu" name="Series" parent="ncf_do.root"
+      action="ncf_do.series_list_action"/>
+
+    <!-- /Series -->
+
+    <!-- Business Division -->
+
+    <record id="ncf_do.busdiv_list_view" model="ir.ui.view">
+      <field name="name">business_division list view</field>
+      <field name="model">ncf_do.business_division</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code" />
+          <field name="name" />
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="ncf_do.business_division_list_action" model="ir.actions.act_window">
+      <field name="name">business_division window</field>
+      <field name="res_model">ncf_do.business_division</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ncf_do.business_division_menu" name="Business Divisions" parent="ncf_do.root"
+      action="ncf_do.business_division_list_action"/>
+
+    <!-- /Business Division -->
+
+    <!-- Emission Point -->
+
+    <record id="ncf_do.emission_point_list_view" model="ir.ui.view">
+      <field name="name">emission_point list view</field>
+      <field name="model">ncf_do.emission_point</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code" />
+          <field name="name" />
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="ncf_do.emission_point_list_action" model="ir.actions.act_window">
+      <field name="name">emission_point window</field>
+      <field name="res_model">ncf_do.emission_point</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ncf_do.emission_point_menu" name="Emission Points" parent="ncf_do.root"
+      action="ncf_do.emission_point_list_action"/>
+
+    <!-- /Emission Point -->
+
+    <!-- Impression Area -->
+
+    <record id="ncf_do.impression_area_list_view" model="ir.ui.view">
+      <field name="name">impresion_area list view</field>
+      <field name="model">ncf_do.impression_area</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code" />
+          <field name="name" />
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="ncf_do.impression_area_list_action" model="ir.actions.act_window">
+      <field name="name">impression_area window</field>
+      <field name="res_model">ncf_do.impression_area</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ncf_do.impression_area_menu" name="Impression Areas" parent="ncf_do.root"
+      action="ncf_do.impression_area_list_action"/>
+
+    <!-- /Impression Area -->
+
+    <!-- Types -->
+
+    <record id="ncf_do.types_list_view" model="ir.ui.view">
+      <field name="name">types list view</field>
+      <field name="model">ncf_do.type</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code" />
+          <field name="name" />
+          <field name="description" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="ncf_do.types_list_action" model="ir.actions.act_window">
+      <field name="name">types window</field>
+      <field name="res_model">ncf_do.type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="ncf_do.types_menu" name="Types" parent="ncf_do.root"
+      action="ncf_do.types_list_action"/>
+
+    <!-- /Types -->
 
   </data>
 </openerp>
