@@ -2,17 +2,21 @@
 
 from openerp import models, fields, api
 
+import logging
+_logger = logging.getLogger(__name__)
+
 class Series(models.Model):
     _name = 'ncf_do.series'
-    _rec_name='code'
     code = fields.Char(string = "Name")
     name = fields.Char(string = "Code")
     description = fields.Char()
 
     # Identifiers for Drop Downs
     _rec_name='identifier'
-    identifier = fields.Char(compute='_gen_rec', hidden=True)
+    identifier = fields.Char(compute='_gen_rec')
     def _gen_rec(self):
-        name = self.name if self.name != False else ''
-        code = self.code if self.code != False else ''
-        self.identifier = name + ' [' + code + ']'
+        for s in self:
+            _logger.error('self count: %r', len(s))
+            name = s.name if s.name != False else ''
+            code = s.code if s.code != False else ''
+            s.identifier = name + ' [' + code + ']'

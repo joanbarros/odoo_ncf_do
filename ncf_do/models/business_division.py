@@ -2,6 +2,9 @@
 
 from openerp import models, fields, api
 
+import logging
+_logger = logging.getLogger(__name__)
+
 class BusinessDivision(models.Model):
     _name = 'ncf_do.business_division'
     code = fields.Char()
@@ -12,6 +15,8 @@ class BusinessDivision(models.Model):
     _rec_name='identifier'
     identifier = fields.Char(compute='_gen_rec', hidden=True)
     def _gen_rec(self):
-        name = self.name if self.name != False else ''
-        code = self.code if self.code != False else ''
-        self.identifier = name + ' [' + code + ']'
+        for s in self:
+            _logger.error('self count: %r', len(s))
+            name = s.name if s.name != False else ''
+            code = s.code if s.code != False else ''
+            s.identifier = name + ' [' + code + ']'
