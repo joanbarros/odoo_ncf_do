@@ -7,8 +7,8 @@ _logger = logging.getLogger(__name__)
 
 class Series(models.Model):
     _name = 'ncf_do.series'
-    code = fields.Char(string = "Name")
-    name = fields.Char(string = "Code")
+    code = fields.Char()
+    name = fields.Char()
     description = fields.Char()
 
     # Identifiers for Drop Downs
