@@ -215,5 +215,18 @@
 
     <!-- /Types -->
 
+    <!-- improved idea categories list -->
+    <record id="id_view_partner_form" model="ir.ui.view">
+      <field name="name">res.partner.id.field</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <!-- find field description and add the field
+             idea_ids after it -->
+        <xpath expr="//field[@name='type']" position="after">
+          <field name="rnc" string="RNC"/>
+        </xpath>
+      </field>
+    </record>
   </data>
 </openerp>
