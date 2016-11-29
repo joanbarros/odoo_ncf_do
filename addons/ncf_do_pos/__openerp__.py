@@ -32,4 +32,7 @@
     'demo': [
         'demo/demo.xml',
     ],
+    'qweb': [
+        'static/src/xml/ncf_do_pos.xml'
+    ],
 }
