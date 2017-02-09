@@ -24,4 +24,13 @@
     </t>
   </t>
 
+  <t t-extend="PosTicket">
+    <t t-jquery="table.receipt-orderlines" t-operation="before">
+      <t t-if="partner.rnc">
+        <div>NCF: <t t-esc="partner.rnc" /></div>
+        <br />
+      </t>
+    </t>
+  </t>
+
 </templates>
