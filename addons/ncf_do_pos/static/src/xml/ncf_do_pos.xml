@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+  <t t-extend="ClientDetails">
+    <t t-jquery="div.client-details-right" t-operation="append">
+      <div class="client-detail">
+          <span class="label">RNC</span>
+          <t t-if="partner.rnc">
+              <span class="detail client-rnc"><t t-esc="partner.rnc" /></span>
+          </t>
+          <t t-if="!partner.rnc">
+              <span class="detail client-rnc empty">N/A</span>
+          </t>
+      </div>
+    </t>
+  </t>
+
+  <t t-extend="ClientDetailsEdit">
+    <t t-jquery="div.client-details-right" t-operation="append">
+      <div class='client-detail'>
+          <span class='label'>RNC</span>
+          <input class='detail client-rnc'  name='rnc'    type='text'      t-att-value='partner.rnc || ""'></input>
+      </div>
+    </t>
+  </t>
+
+</templates>
