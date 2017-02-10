@@ -53,6 +53,7 @@ class NCF(models.Model):
                            + str(ncf.business_division.code) \
                             + str(ncf.emission_point.code) \
                             + str(ncf.impression_area.code)
+        return ncf.prefix
 
     @api.model
     def create(self, values):#, cr, uid, values, context=None):
@@ -84,4 +85,4 @@ class NCF(models.Model):
         return sup
 
     def next(self, type):
-        pass
+        return str(self.compute_prefix()) + str(self.seq_type12._next());

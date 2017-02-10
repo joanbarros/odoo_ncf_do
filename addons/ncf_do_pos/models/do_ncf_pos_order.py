@@ -10,6 +10,23 @@ class POSOrderIntegration(models.Model):
 
     ncf = fields.Char()
 
-    def create(self, cr, uid, values, context=None):
+    @api.model
+    def create(self, values):
+    #def create(self, cr, uid, values, context=None):
         _logger.info('========== creating order =============')
-        return super(POSOrderIntegration, self).create(cr, uid, values, context=context)
+
+        sup = super(POSOrderIntegration, self).create(values)
+
+        sessionModel = self.env['pos.session']
+
+        session = sessionModel.browse(values['session_id'])[0]
+        config = session.config_id
+        ncf = config.ncf
+
+        new_values = {}
+
+        new_values['ncf'] = ncf.next(12);
+
+        sup.write(new_values)
+
+        return sup

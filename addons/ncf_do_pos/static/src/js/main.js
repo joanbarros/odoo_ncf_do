@@ -1,4 +1,6 @@
 odoo.define('ncf_do_pos.main', function (require) {
+  var Model = require('web.DataModel');
+  window.posorder = new Model('pos.order');
   console.log('from the new module');
   var pos_screens = require('point_of_sale.screens');
   var mine = pos_screens.NumpadWidget.include({
@@ -22,6 +24,35 @@ odoo.define('ncf_do_pos.main', function (require) {
     }
   }
   console.log('newPosModel', pos_models.PosModel);
+
+  var export_for_printing = pos_models.Order.prototype.export_for_printing;
+
+  pos_models.Order.prototype.export_for_printing = function () {
+    var thisOrder = this;
+    var OrderModel = new Model('pos.order');
+    var self = this;
+    var receipt = null;
+
+    console.log('123 testing');
+    console.debug('order', this);
+    var order = OrderModel.query(['ncf'])
+    //.filter([['pos_reference', '=', thisOrder.name]])
+    .order_by(['-create_date'])
+    .limit(1)
+    .all()
+    .then(function (order) {
+      receipt = export_for_printing.apply(self, arguments);
+      console.debug('fetched order', order);
+      // console.debug('receipt', receipt);
+      receipt.ncf = order[0].ncf;
+      console.debug('receipt', receipt);
+      //return receipt;
+    });
+
+    // receipt.ncf = 'Test';
+
+    return receipt;
+  }
 
   return {
     Mine: mine

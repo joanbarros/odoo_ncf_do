@@ -26,10 +26,10 @@
 
   <t t-extend="PosTicket">
     <t t-jquery="table.receipt-orderlines" t-operation="before">
-      <t t-if="partner.rnc">
-        <div>NCF: <t t-esc="partner.rnc" /></div>
+      <!-- <t t-if="receipt.ncf"> -->
+        <div>NCF: <t t-esc="receipt.ncf" /></div>
         <br />
-      </t>
+      <!-- </t> -->
     </t>
   </t>
 
